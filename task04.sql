@@ -4,7 +4,7 @@ WITH test_data( created,
 SELECT date_trunc('month', created),
        resume_id
 FROM resume)
-SELECT count(resume_id), Extract(MONTH from created::date ) AS mm, Extract(YEAR from created::date ) AS yyyy
+SELECT count(resume_id), Extract(MONTH from created) AS mm, Extract(YEAR from created) AS yyyy
 FROM test_data
 GROUP BY created
 ORDER BY count(*) DESC
@@ -16,7 +16,7 @@ WITH test_data( created,
 SELECT date_trunc('month', created),
        vacancy_id
 FROM vacancy)
-SELECT count(vacancy_id), Extract(MONTH from created::date ) AS mm, Extract(YEAR from created::date ) AS yyyy
+SELECT count(vacancy_id), Extract(MONTH from created) AS mm, Extract(YEAR from created) AS yyyy
 FROM test_data
 GROUP BY created
 ORDER BY count(*) DESC
