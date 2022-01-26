@@ -22,13 +22,11 @@ CREATE TABLE resume (
     created             date,
     applicant_id        integer not null,
     area_id             integer,
+    work_experience     boolean,
     specialization_id   integer references specialization(specialization_id),
     position_name       text not null,
-    industry_id         integer,
-    vacancy_description text,
-    compensation_from   integer,
-    compensation_to     integer,
-    compensation_gross  boolean
+    compensation        integer,
+    education_id        integer
 );
 
 CREATE TABLE response (
