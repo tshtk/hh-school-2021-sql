@@ -30,7 +30,7 @@ CREATE TABLE resume (
 );
 
 CREATE TABLE response (
-    response    serial primary key,
+    response_id    serial primary key,
     created     date,
     resume_id   integer references resume(resume_id),
     vacancy_id  integer references vacancy(vacancy_id)

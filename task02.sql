@@ -89,6 +89,7 @@ FROM vacancy v
 JOIN resume r ON (v.area_id = r.area_id
                            AND v.specialization_id = r.specialization_id
                            AND r.compensation > v.compensation_from
+                           AND r.compensation < v.compensation_to
                            AND r.created > v.created))
 INSERT INTO response(created, resume_id, vacancy_id)
 SELECT created, resume_id, vacancy_id
