@@ -11,4 +11,4 @@ CREATE INDEX vacancy_area_specialization_compensation_index ON vacancy (area_id,
 
 -- Для работодателей частым вариантом поиска резюме среди откликов на конкретную вакансию
 -- Соответствующий индекс для ускорения такого поиска
-CREATE INDEX response_vacancy_index ON response (vacancy_id);
+CREATE INDEX response_vacancy_index ON response USING HASH (vacancy_id);
