@@ -7,7 +7,7 @@ CREATE TABLE vacancy (
     vacancy_id          serial primary key,
     created             date,
     employer_id         integer not null,
-    position_name       text not null,
+    vacancy_title       text not null,
     area_id             integer,
     specialization_id   integer references specialization(specialization_id),
     industry_id         integer,
