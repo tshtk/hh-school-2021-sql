@@ -1,37 +1,42 @@
+-- Создание таблиц вакансии(vacancy), резюме(resume), отклики(response), специализации(specialization).
+-- Подразумевается, что эти 4 создаваемые таблицы будут связаны с таблицами работодатели(employer), соискатели(applicant),
+-- отрасль(industry), образование(education), которые в этом примере для простоты не создаются.
+
+
 CREATE TABLE specialization (
-    specialization_id       serial primary key,
-    specialization_title    text
+  specialization_id       SERIAL PRIMARY KEY,
+  specialization_title    TEXT
 );
 
 CREATE TABLE vacancy (
-    vacancy_id          serial primary key,
-    created             date,
-    employer_id         integer not null,
-    vacancy_title       text not null,
-    area_id             integer,
-    specialization_id   integer references specialization(specialization_id),
-    industry_id         integer,
-    vacancy_description text,
-    compensation_from   integer,
-    compensation_to     integer,
-    compensation_gross  boolean
+  vacancy_id          SERIAL PRIMARY KEY,
+  created             DATE NOT NULL,
+  employer_id         INTEGER NOT NULL,
+  vacancy_title       TEXT NOT NULL,
+  area_id             INTEGER NOT NULL,
+  specialization_id   INTEGER REFERENCES specialization(specialization_id),
+  industry_id         INTEGER,
+  vacancy_description TEXT,
+  compensation_from   INTEGER,
+  compensation_to     INTEGER,
+  compensation_gross  BOOLEAN
 );
 
 CREATE TABLE resume (
-    resume_id           serial primary key,
-    created             date,
-    applicant_id        integer not null,
-    area_id             integer,
-    work_experience     boolean,
-    specialization_id   integer references specialization(specialization_id),
-    position_name       text not null,
-    compensation        integer,
-    education_id        integer
+  resume_id         SERIAL PRIMARY KEY,
+  created           DATE NOT NULL,
+  applicant_id      INTEGER NOT NULL,
+  area_id           INTEGER NOT NULL,
+  work_experience   BOOLEAN,
+  specialization_id INTEGER REFERENCES specialization(specialization_id),
+  desired_position  TEXT NOT NULL,
+  compensation      INTEGER,
+  education_id      INTEGER
 );
 
 CREATE TABLE response (
-    response_id    serial primary key,
-    created     date,
-    resume_id   integer references resume(resume_id),
-    vacancy_id  integer references vacancy(vacancy_id)
+  response_id SERIAL PRIMARY KEY,
+  created     DATE,
+  resume_id   INTEGER REFERENCES resume(resume_id),
+  vacancy_id  INTEGER REFERENCES vacancy(vacancy_id)
 )
