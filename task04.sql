@@ -17,4 +17,4 @@ WITH max_resume_created(month, count) AS (
   LIMIT 1)
 SELECT *
 FROM max_vacancy_created
-INNER JOIN max_resume_created ON TRUE;
+CROSS JOIN max_resume_created;
