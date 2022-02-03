@@ -12,7 +12,7 @@ CREATE TABLE vacancy (
   id                  SERIAL PRIMARY KEY,
   created             DATE NOT NULL,
   employer_id         INTEGER NOT NULL,
-  title               TEXT NOT NULL,
+  title               VARCHAR NOT NULL,
   area_id             INTEGER NOT NULL,
   specialization_id   INTEGER REFERENCES specialization(id),
   industry_id         INTEGER,
@@ -29,7 +29,7 @@ CREATE TABLE resume (
   area_id           INTEGER NOT NULL,
   work_experience   BOOLEAN,
   specialization_id INTEGER REFERENCES specialization(id),
-  desired_position  TEXT NOT NULL,
+  desired_position  VARCHAR NOT NULL,
   compensation      INTEGER,
   education_id      INTEGER
 );
