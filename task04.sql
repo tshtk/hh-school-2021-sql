@@ -3,14 +3,14 @@
 
 WITH max_resume_created(month, count) AS (
   SELECT to_char(created, 'YYYY-MM'),
-         COUNT(resume_id)
+         COUNT(id)
   FROM resume
   GROUP BY to_char(created, 'YYYY-MM')
   ORDER BY COUNT(*) DESC
   LIMIT 1),
      max_vacancy_created(month, count) AS (
   SELECT to_char(created, 'YYYY-MM'),
-         COUNT(vacancy_id)
+         COUNT(id)
   FROM vacancy
   GROUP BY to_char(created, 'YYYY-MM')
   ORDER BY COUNT(*) DESC
